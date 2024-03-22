@@ -1,0 +1,46 @@
+{
+  "name": "cap_demo",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/hana-client": "^2.19.21",
+    "express": "^4",
+    "hdb": "^0.19.7",
+    "@sap/xssec": "^3",
+    "passport": "^0",
+    "@sap-cloud-sdk/http-client": "3.12.1",
+    "@sap-cloud-sdk/resilience": "3.12.1"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/hdi-deploy": "4.9.2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "db": "hana",
+      "auth": "xsuaa",
+      "Northwind": {
+        "kind": "odata",
+        "model": "srv/external/Northwind",
+        "credentials": {
+          "destination": "Northwind"
+        }
+      }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    },
+    "features":{
+      "kibana_formatter": true
+    }
+  }
+}
